@@ -9,7 +9,7 @@ class TeachersController < ApplicationController
 		@teacher = Teacher.new
 	end
 	def create
-		@teacher = Teacher.new(teacher_params)
+		@teacher = current_user.teachers.new(teacher_params)
 		if @teacher.save
 			redirect_to @teacher
 		else
